@@ -30,7 +30,6 @@ public class SpringMvcHospitalAppApplication {
 			p1.setGroupeSanguin("O+");
 			p1.setAllergie("Pénicilline");
 			p1.setAntecedentMedical("Asthme");
-			patientRepository.save(p1);
 
 			// AllArgsConstructor
 			Patient p2 = new Patient(
@@ -44,10 +43,12 @@ public class SpringMvcHospitalAppApplication {
 					"Crustacés",
 					"Hypertension"
 			);
-			patientRepository.save(p2);
 
 			// Pattern Builder
 			Patient p3 = Patient.builder()
+					.id(null)
+					.nom("Leo")
+					.prenom("Michael")
 					.allergie("Lactose")
 					.dateNaissance(LocalDate.of(2018, 11, 5))
 					.adresse("3 Boulevard de la Liberté, Lyon")
@@ -55,9 +56,12 @@ public class SpringMvcHospitalAppApplication {
 					.groupeSanguin("B+")
 					.antecedentMedical("Otites à répétition")
 					.build();
+
+			patientRepository.save(p1);
+			patientRepository.save(p2);
 			patientRepository.save(p3);
 
-			List patients = patientRepository.findAll();
+			List<Patient> patients = patientRepository.findAll();
 			patients.forEach(p-> {
 				System.out.println(p.toString());
 			});

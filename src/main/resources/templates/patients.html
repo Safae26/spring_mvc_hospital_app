@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+    <link rel="stylesheet" style="text/css" href="/webjars/bootstrap/5.3.5/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="p-3 m-2">
+        <div class="card">
+            <div class="card-header">Liste de patients</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>Id</td> <td>Nom</td> <td>Prenom</td> <td>Date de Naissance</td> <td>Adresse</td> <td>Numero de Telephone</td> <td>Groupe Sanguin</td> <td>allergie</td> <td>Antecedent Medical</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="patient : ${ListePatients}">
+                        <td th:text="${patient.id}"></td>
+                        <td th:text="${patient.nom}"></td>
+                        <td th:text="${patient.prenom}"></td>
+                        <td th:text="${patient.dateNaissance}"></td>
+                        <td th:text="${patient.adresse}"></td>
+                        <td th:text="${patient.numeroTelephone}"></td>
+                        <td th:text="${patient.groupeSanguin}"></td>
+                        <td th:text="${patient.allergie}"></td>
+                        <td th:text="${patient.AntecedentMedical}"></td>
+                        <td>
+                            <a onclick="return confirm('Are you sure?')" class="btn btn-danger" th:href="@{deletePatient(id=${patient.id})}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
