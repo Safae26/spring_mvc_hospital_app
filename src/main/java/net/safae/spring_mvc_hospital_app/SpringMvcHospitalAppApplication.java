@@ -46,7 +46,6 @@ public class SpringMvcHospitalAppApplication {
 
 			// Pattern Builder
 			Patient p3 = Patient.builder()
-					.id(null)
 					.nom("Leo")
 					.prenom("Michael")
 					.allergie("Lactose")

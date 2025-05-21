@@ -16,10 +16,10 @@ public class PatientController {
     @Autowired
     private PatientRepository patientRepository;
 
-    @GetMapping("/index")  // Ensure this matches the URL you're accessing
+    @GetMapping("/index")
     public String index(Model model) {
         model.addAttribute("ListePatients", patientRepository.findAll());
-        return "patients";  // Must match "patients.html" (case-sensitive)
+        return "patients";
     }
     @GetMapping("/deletePatient")
     public String deletePatient(@RequestParam(name="id") Long idPatient) {
